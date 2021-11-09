@@ -1,5 +1,5 @@
 ### Project-Name
-NEWS-APP
+Haven Pitches
 ### Description
 This is an application that allow users to submit pitches and other users will vote on them and leave comments to give their feedback on them
 
@@ -16,7 +16,7 @@ This is an application that allow users to submit pitches and other users will v
 - CSS
 - Mako
 - Shell
-- Javascript
+
 
 
 ##### Setup Instructions and Installation
