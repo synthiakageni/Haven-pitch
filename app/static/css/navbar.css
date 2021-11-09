@@ -4,13 +4,13 @@
 
 }
 .navbar {
-	background-color: #062a78; 
+	background-color:bisque; 
 }
 
 .navbar-brand {
 	font-family: 'Merriweather', serif;
 	font-weight: bold;
 	font-size: 25px;
-	color: White !important;
+	color: brown !important;
 
 }

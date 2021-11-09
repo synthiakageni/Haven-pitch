@@ -1,11 +1,11 @@
 from flask import render_template,request,url_for,abort,redirect
 from . import main
 from flask_login import login_required, current_user
-from ..models import Comments, User,Role,Categories,Pitches,Comments,Upvotes,Downvotes
+from ..models import Comments, User,Role,Categories,Pitches,Comments,Upvotes,Downvotes, Pitches
 from .forms import UpdateProfile,PitchForm,CommentForm
 from .. import db
 import markdown2
-
+from app.models import User,Pitches
 
 @main.route('/')
 def index():
@@ -15,8 +15,8 @@ def index():
     
     return render_template('profile/index.html',categories = category)
 
-@main.route('/pitch/<int:id>')
-def pitch(id):
+@main.route('/pitch')
+def pitch():
         category = Categories.query.filter_by(id=id).first().id
         title =Categories.query.filter_by(id=id).first().category
         pitches = Pitches.get_pitch(category)
@@ -36,8 +36,7 @@ def comment(id):
 @login_required
 def new_pitch(id):
     form = PitchForm()
-    cat = Categories.query.filter_by(id=id).first().id
-    
+    # cat = Categories.query.filter_by(id=id).first().id
     if form.validate_on_submit():
         pitch = form.pitch.data
         category_id = Categories.query.filter_by(id=id).first().id
@@ -50,6 +49,8 @@ def new_pitch(id):
         return redirect(url_for('main.index'))
     
     return render_template('new_pitch.html', pitch_form=form)
+
+
 
 @main.route('/<int:id>')
 def single_pitch(id):
@@ -92,7 +93,7 @@ def update_profile(uname):
 def update_pic(uname):
     user = User.query.filter_by(username = uname).first()
     if 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
+        # filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
         user.profile_pic_path = path
         db.session.commit()

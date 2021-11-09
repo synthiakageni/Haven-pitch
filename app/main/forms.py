@@ -1,11 +1,16 @@
+from random import choices
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField
+from wtforms import StringField,PasswordField,SubmitField,BooleanField,TextAreaField,RadioField
+from wtforms import validators
 from wtforms.validators import Email,EqualTo
 from ..models import User,Categories
 from wtforms import ValidationError
 from wtforms.validators import InputRequired
+
+
 class PitchForm(FlaskForm):
-    pitch = TextAreaField('Pitch')
+    pitch = TextAreaField('Pitch', validators=[InputRequired()])
+    # pitch_category = RadioField('choose one cateory', validators=[InputRequired()], choices=[('science pitch'), ('humanity pitch'),('enviromental pitch')])
     submit = SubmitField('Submit')
     
 class CommentForm(FlaskForm):
