@@ -35,17 +35,17 @@ def comment(id):
 @main.route('/pitch/new/<int:id>', methods=['GET','POST'])
 @login_required
 def new_pitch(id):
+    
     form = PitchForm()
     # cat = Categories.query.filter_by(id=id).first().id
     if form.validate_on_submit():
-        pitch = form.pitch.data
+        
         category_id = Categories.query.filter_by(id=id).first().id
 
-        
-        new_pitch = Pitches(pitch=pitch, category_id=category_id,user=current_user)
-        
-        db.session.add(new_pitch)
-        db.session.commit()
+        pitch=form.pitch.data        
+        new_pitch = Pitches(id=id,pitch=pitch, category_id=category_id,owner=current_user)
+        new_pitch.save_pitch()
+       
         return redirect(url_for('main.index'))
     
     return render_template('new_pitch.html', pitch_form=form)

@@ -10,7 +10,6 @@ from wtforms.validators import InputRequired
 
 class PitchForm(FlaskForm):
     pitch = TextAreaField('Pitch', validators=[InputRequired()])
-    # pitch_category = RadioField('choose one cateory', validators=[InputRequired()], choices=[('science pitch'), ('humanity pitch'),('enviromental pitch')])
     submit = SubmitField('Submit')
     
 class CommentForm(FlaskForm):
