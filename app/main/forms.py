@@ -9,7 +9,7 @@ from wtforms.validators import InputRequired
 
 
 class PitchForm(FlaskForm):
-    pitch = TextAreaField('Pitch', validators=[InputRequired()])
+    pitch = TextAreaField('Pitch')
     submit = SubmitField('Submit')
     
 class CommentForm(FlaskForm):

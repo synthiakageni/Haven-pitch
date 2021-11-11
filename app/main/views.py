@@ -37,14 +37,17 @@ def comment(id):
 def new_pitch(id):
     
     form = PitchForm()
-    # cat = Categories.query.filter_by(id=id).first().id
-    if form.validate_on_submit():
-        
+    if form.validate_on_submit(): 
         category_id = Categories.query.filter_by(id=id).first().id
-
-        pitch=form.pitch.data        
-        new_pitch = Pitches(id=id,pitch=pitch, category_id=category_id,owner=current_user)
-        new_pitch.save_pitch()
+       
+        pitch=form.pitch.data 
+       
+        new_pitch = Pitches(pitch=pitch,category_id=category_id,owner=current_user.id)
+        # import pdb;pdb.set_trace()
+        db.session.add(new_pitch)
+        db.session.commit()
+    
+        
        
         return redirect(url_for('main.index'))
     
@@ -94,7 +97,7 @@ def update_pic(uname):
     user = User.query.filter_by(username = uname).first()
     if 'photo' in request.files:
         # filename = photos.save(request.files['photo'])
-        path = f'photos/{filename}'
+        path = f'photos/'
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))    

@@ -81,7 +81,7 @@ class Pitches(db.Model):
     downvote = db.relationship('Downvotes', backref = 'pitch', lazy = "dynamic")
     
 
-    def __repr__(self):
+    def __str__(self):
         return f'User {self.pitch}' 
         
     def save_pitch(self):

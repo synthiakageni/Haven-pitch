@@ -1,0 +1,13 @@
+             List of relations
+ Schema |      Name       | Type  |  Owner  
+--------+-----------------+-------+---------
+ public | alembic_version | table | synthia
+ public | categories      | table | synthia
+ public | comments        | table | synthia
+ public | downvotes       | table | synthia
+ public | pitch           | table | synthia
+ public | roles           | table | synthia
+ public | upvotes         | table | synthia
+ public | users           | table | synthia
+(8 rows)
+

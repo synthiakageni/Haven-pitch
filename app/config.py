@@ -3,7 +3,9 @@ class Config:
     """
     """
     SECRET_KEY = os.environ.get('SECRET_KEY')
-
+    # simple mde  configurations
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLEMDE_USE_CDN = True
 
 
 class ProdConfig(Config):
